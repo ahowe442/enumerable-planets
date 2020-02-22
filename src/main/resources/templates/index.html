@@ -8,7 +8,35 @@
 
 </head>
 <body>
-<h1>Pick a planet:</h1>
+<h1>Number of earth days on each planet:</h1>
+<div class="form-group">
+        <ol th:field="${planet}">
+            <li th:each="planet : ${planets}"
+                    th:value="${planet}"
+                    th:text="${planet.displayName} + ' : ' + ${planet.yearLength}"
+            ></li>
+        </ol>
+</div>
 
+<div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Planet Name</th>
+                <th scope="col">Year Length</th>
+                <th scope="col">Planet Location Group</th>
+                <th scope="col">Distance From The Earth</th>
+            </tr>
+        </thead>
+
+            <tr scope="row" th:each="planet : ${planets}">
+                <td th:text="${planet.displayName}"></td>
+                <td th:text="${planet.yearLength}"></td>
+                <td th:text="${planet.innerOuter}"></td>
+                <td th:text="${planet.distanceFromEarth}"></td>
+            </tr>
+
+    </table>
+</div>
 </body>
 </html>
